@@ -1,0 +1,12 @@
+# Tigrinya Word Embeddings from Scratch
+# Core Implementation Requirements
+
+# The core implementation, model training, gradients, and evaluation
+# use ONLY the Python standard library (math, random, json, re, time, os,
+# pathlib, unittest, argparse, collections).
+# NO third-party packages are required to run tests or train the model.
+
+# Optional tools used strictly outside the core training loop
+# (for repository management, Hugging Face Hub uploads, or reading parquet archives):
+# huggingface_hub>=0.20.0
+# pyarrow>=14.0.0
