@@ -4722,7 +4722,7 @@
     "val_ratio": 0.15
   },
   "corpus_metadata": {
-    "dataset_name": "Gamayun Language Data Kits — Tigrinya (5k)",
+    "dataset_name": "TWB Parallel Sentence Kits – Tigrinya (5k)",
     "source": "CLEAR Global / Translators without Borders",
     "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
     "raw_sentences_loaded": 600,
@@ -4731,7 +4731,10 @@
     "total_tokens_train": 2781,
     "vocabulary_size": 195,
     "training_pairs_count": 2984,
-    "validation_pairs_count": 350
+    "validation_pairs_count": 350,
+    "hosting_platform": "Mozilla Data Collective (https://mozilladatacollective.com/datasets/cmoskmbpj00vxnu07w8lu7rrk)",
+    "provider": "CLEAR Global (formerly Translators without Borders)",
+    "attribution": "Credit CLEAR Global when using the dataset."
   },
   "training_metrics": {
     "initial_train_loss": 5.273132857609332,

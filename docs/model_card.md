@@ -59,8 +59,11 @@ Every mathematical operation—including row embedding lookups, candidate score 
 
 ## 3. Training Data Provenance & Preprocessing
 
-* **Dataset**: Gamayun Language Data Kits — Tigrinya (`kit5k.tsv`), published by **CLEAR Global** (formerly Translators without Borders).
-* **License**: **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
+* **Dataset**: [TWB Parallel Sentence Kits – Tigrinya (5k)](https://mozilladatacollective.com/datasets/cmoskmbpj00vxnu07w8lu7rrk)
+* **Hosting Platform**: **Mozilla Data Collective**
+* **Provider**: **CLEAR Global** (formerly Translators without Borders)
+* **License**: **Creative Commons Attribution 4.0 International (CC BY 4.0)**
+* **Attribution**: Credit CLEAR Global when using this dataset.
 * **Citation**: Öktem et al. (2020), *Gamayun – Language Technology for Humanitarian Response*, IEEE GHTC 2020.
 * **Preprocessing Pipeline**:
   1. Extracted Tigrinya parallel translations in Ge'ez script.

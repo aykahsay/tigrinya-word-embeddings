@@ -6,9 +6,16 @@ This directory manages the training and evaluation corpus for the Tigrinya Skip-
 
 ## 1. Provenance and Source
 
-* **Dataset Name**: Gamayun Language Data Kits — Tigrinya (5k) (`kit5k.tsv`)
-* **Publisher / Creators**: CLEAR Global (formerly Translators without Borders)
-* **Citation**:
+* **Dataset Title**: [TWB Parallel Sentence Kits – Tigrinya (5k)](https://mozilladatacollective.com/datasets/cmoskmbpj00vxnu07w8lu7rrk)
+* **Hosting Platform**: **Mozilla Data Collective** (`https://mozilladatacollective.com/datasets/cmoskmbpj00vxnu07w8lu7rrk`)
+* **Provider**: **CLEAR Global (formerly Translators without Borders)**
+* **Content**: 5,000 English–Tigrinya parallel sentence pairs
+* **Format**: TSV (`kit5k.tsv`) inside a `.tar.gz` archive (`1777882055452-CLEAR_Gamayun_tig-eng_5k.tar.gz`)
+* **License**: **Creative Commons Attribution 4.0 International (CC BY 4.0)**
+  * Full unaltered license text preserved in: [`data/LICENSE_DATA.txt`](file:///c:/icoglabs/tigrinya-word-embeddings/data/LICENSE_DATA.txt)
+  * Canonical license reference: [https://creativecommons.org/licenses/by/4.0/legalcode](https://creativecommons.org/licenses/by/4.0/legalcode)
+* **Attribution Requirement**: **Credit CLEAR Global** when using or deriving from this dataset.
+* **Academic Citation**:
   ```bibtex
   @inproceedings{oktem-etal-2020-gamayun,
     title     = {Gamayun -- Language Technology for Humanitarian Response},
@@ -19,9 +26,6 @@ This directory manages the training and evaluation corpus for the Tigrinya Skip-
     doi       = {10.1109/GHTC49095.2020.9342939}
   }
   ```
-* **Source Repository**: [Hugging Face: CLEAR-Global/Gamayun-kits](https://huggingface.co/datasets/CLEAR-Global/Gamayun-kits)
-* **License**: **Creative Commons Attribution 4.0 International (CC BY 4.0)**
-  Full legal code: [https://creativecommons.org/licenses/by/4.0/legalcode](https://creativecommons.org/licenses/by/4.0/legalcode)
 
 ---
 

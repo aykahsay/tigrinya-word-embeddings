@@ -66,8 +66,12 @@ Row-vector notation is used throughout:
 
 ## 4. Dataset & Preprocessing
 
-* **Source**: CLEAR Global / Translators without Borders Gamayun Language Data Kits — Tigrinya (`kit5k.tsv`).
-* **License**: **Creative Commons Attribution 4.0 International (CC BY 4.0)** (see [data/LICENSE_DATA.txt](data/LICENSE_DATA.txt) and [data/README.md](data/README.md)).
+* **Dataset**: [TWB Parallel Sentence Kits – Tigrinya (5k)](https://mozilladatacollective.com/datasets/cmoskmbpj00vxnu07w8lu7rrk)
+* **Hosting Platform**: **Mozilla Data Collective**
+* **Provider**: **CLEAR Global** (formerly Translators without Borders)
+* **Content**: 5,000 English–Tigrinya parallel sentence pairs in TSV format
+* **License**: **Creative Commons Attribution 4.0 International (CC BY 4.0)** (unaltered license text in [data/LICENSE_DATA.txt](data/LICENSE_DATA.txt))
+* **Attribution Requirement**: Credit CLEAR Global when using or adapting this dataset.
 * **Preprocessing Rules**:
   * Sentence splitting strictly adheres to Ethiopic (`።`, `፧`) and Latin (`?`, `!`, `.`) terminators.
   * Context pairs **never cross sentence boundaries**.
