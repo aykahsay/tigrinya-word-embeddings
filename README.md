@@ -40,27 +40,59 @@ Unlike prior work using compiled C++ or PyTorch backends, this project provides 
 
 ## 3. Mathematical Architecture
 
-Full mathematical derivations are detailed in [docs/methodology.md](docs/methodology.md).
+Full mathematical derivations and proofs are detailed in [docs/methodology.md](docs/methodology.md).
 
 Row-vector notation is used throughout:
-* Vocabulary size: $V$, Embedding dimension: $d$.
-* Input embedding matrix: $E \in \mathbb{R}^{V \times d}$.
-* Output context matrix: $U \in \mathbb{R}^{d \times V}$.
+* Vocabulary size: `V`
+* Embedding dimension: `d`
+* Input embedding matrix `E`: Shape `V × d`
+* Output context matrix `U`: Shape `d × V`
 
-### Operations
-1. **Embedding Lookup**: $h = E[i]$ (shape $1 \times d$).
-2. **Candidate Scores**: $s = h U$ (shape $1 \times V$), where $s[j] = \sum_{k=0}^{d-1} h[k] U[k, j]$.
-3. **Numerically Stable Softmax**:
-   $$m = \max(s), \quad a[j] = \exp(s[j] - m), \quad p[j] = \frac{a[j]}{\sum_{r=0}^{V-1} a[r]}$$
-4. **Stable Cross-Entropy Loss**:
-   $$L = (m - s[t]) + \ln\left(\sum_{r=0}^{V-1} a[r]\right)$$
-5. **Analytical Gradients**:
-   * Score error: $e[j] = p[j] - 1$ if $j = t$, else $p[j]$.
-   * Output matrix gradient: $\nabla_U L = h^T e \in \mathbb{R}^{d \times V}$.
-   * Center embedding gradient: $\nabla_h L = e U^T \in \mathbb{R}^{1 \times d}$ (computed with pre-update $U$).
-6. **SGD Updates**:
-   $$U \leftarrow U - \eta \nabla_U L, \quad E[i] \leftarrow E[i] - \eta \nabla_h L$$
-   (All other rows of $E$ remain strictly unmodified during this step).
+### Forward Pass
+1. **Embedding Lookup**:
+   ```
+   h = E[i]                                    # Center word vector (shape: 1 × d)
+   ```
+2. **Candidate Scores**:
+   ```
+   s[j] = sum(h[k] * U[k][j] for k in range(d)) # Dot product s = h · U (shape: 1 × V)
+   ```
+3. **Numerically Stable Softmax** (max-shift trick prevents overflow):
+   ```
+   m = max(s)
+   a[j] = exp(s[j] - m)
+   p[j] = a[j] / sum(a)                        # Probabilities sum to 1.0
+   ```
+4. **Stable Cross-Entropy Loss** (avoids log(0) underflow):
+   ```
+   L = (m - s[t]) + ln(sum(a))
+   ```
+
+### Analytical Gradients
+* **Score Error Vector (e = p - y)**:
+   ```
+   e[j] = p[j] - 1   if j == t (target context token)
+   e[j] = p[j]       if j != t (all other tokens)
+   ```
+* **Output Matrix Gradient (grad_U = hᵀ · e)**:
+   ```
+   grad_U[k][j] = h[k] * e[j]                  # Shape: d × V
+   ```
+* **Center Embedding Gradient (grad_h = e · Uᵀ)**:
+   ```
+   grad_h[k] = sum(U[k][j] * e[j] for j in range(V)) # Shape: 1 × d (uses pre-update U)
+   ```
+
+### SGD Parameter Updates
+* **Output Matrix**:
+   ```
+   U[k][j] = U[k][j] - learning_rate * grad_U[k][j]
+   ```
+* **Center Embedding Vector** (only active center row is updated):
+   ```
+   E[i][k] = E[i][k] - learning_rate * grad_h[k]
+   ```
+   *(All other rows of E remain strictly unmodified during this step)*
 
 ---
 
